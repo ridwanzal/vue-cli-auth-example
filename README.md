@@ -1,5 +1,3 @@
-# dezainla-web
-
 ## Project setup
 ```
 npm install
