@@ -3,7 +3,7 @@
      <div class="container">
         <div id="nav">
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <a class="navbar-brand" href="#">Navbar</a>
+              <a class="navbar-brand" href="#"><img alt="Vue logo" src="../../assets/logopeople.svg"></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -24,6 +24,7 @@
                 </span>
                 <span class="navbar-text">
                   <router-link v-if="!authenticated" to="/auth/masuk">{{loginLabel}}</router-link>
+                  <router-link v-if="!authenticated" to="/auth/daftar" class="btn btn-success" style="margin-left:20px;">{{registerLabel}}</router-link>
                 </span>
               </div>
           </nav>
@@ -34,6 +35,7 @@
          <div class="row">
            <div class="col-lg-12">
             <div class="header">
+             <img alt="TalentGrit Present" src="../../assets/present.svg" width="20%">
               <h1>People, solusi Payroll & HRIS untuk bisnis anda</h1>
               <p>
                People merupakan aplikasi HRIS dan Software Payroll
@@ -42,10 +44,100 @@
                Training dsb
               </p>
             </div>
+            <div class="cta">
+              <router-link v-if="!authenticated" to="/auth/daftar" class="btn btn-success bold" style="margin-left:20px;">{{registerLabel}} Sekarang</router-link>
+            </div>
            </div>
          </div>
        </div>
      </div>
+     <div class="section-two">
+       <div class="container">
+         <div class="row">
+           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+             <div class="header">
+              <h1>Optimalkan HR anda, dan jadi lebih produktif</h1>
+             </div>
+             <p>Salah satu cara terbaik untuk mengoptimalkan peran HR diperusahaan anda adalah dengan meminimalisir pekerjaan administratif yang berulang-ulang. Anda dapat meminimalisir hal ini dengan menerapkan system HR yang fungsional.</p>
+           </div>
+           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <img alt="Vue logo" src="../../assets/people-1.svg" width="50%">
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="section-three">
+       <div class="container">
+         <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+             <div class="card">
+               <div class="card-body">
+                 <h5 class="card-title">Employee Management</h5>
+                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+               </div>
+             </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+             <div class="card" >
+               <div class="card-body">
+                 <h5 class="card-title">Payroll Management</h5>
+                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+               </div>
+             </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+             <div class="card" >
+               <div class="card-body">
+                 <h5 class="card-title">Online Presence</h5>
+                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+               </div>
+             </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+             <div class="card" >
+               <div class="card-body">
+                 <h5 class="card-title">Online Presence</h5>
+                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+               </div>
+             </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+             <div class="card" >
+               <div class="card-body">
+                 <h5 class="card-title">Interactive Forms</h5>
+                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+               </div>
+             </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+             <div class="card" >
+               <div class="card-body">
+                 <h5 class="card-title">Claims</h5>
+                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+               </div>
+             </div>
+          </div>
+        </div>
+       </div>
+     </div>
+     <div class="section-four">
+       <div class="container">
+         <div class="row">
+           <div class="col-lg-10 col-md-10 col-xs-12 colone">
+             <h1>Coba Sekarang</h1>
+             <p>Uji coba Gratis sekarang</p>
+           </div>
+           <div class="col-lg-2 col-md-2 col-xs-12 coltwo">
+                <router-link v-if="!authenticated" to="/auth/daftar" class="btn btn-success bold" style="margin-left:20px;">{{registerLabel}} Sekarang</router-link>
+           </div>
+         </div>
+       </div>
+     </div>
+     <footer class="footer">
+      <div class="container">
+        <span class="text-muted">People. by Talent-Grit. &copy; 2020</span>
+      </div>
+     </footer>
  </div>
 </template>
 
@@ -54,36 +146,22 @@ export default {
   name: 'Landing',
   data () {
     return {
-      authenticated: false,
-      authlink: '/auth/masuk',
-      loginLabel: 'Login',
-      logoutLabel: 'Logout',
-      mock_account: {
-        username: 'ridwan',
-        password: '123'
-      }
+      loginLabel: 'Masuk',
+      logoutLabel: 'Keluar',
+      registerLabel: 'Daftar'
     }
   },
   mounted () {
-    console.log(this.loginLabel)
-    if (!this.authenticated) {
-      // this.$router.replace({ name: 'login' })
-    }
+
   },
   methods: {
-    setAuthenticated (status) {
-      this.authenticated = status
-    },
-    logout () {
-      this.authenticated = false
-      this.$router.replace({ name: 'masuk' })
-    }
+
   }
 }
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 .landing-wrapper{
  #nav {
    nav {
@@ -107,33 +185,112 @@ export default {
      color: #fff;
 
      &.router-link-exact-active {
-       color: #42b983;
+       color: #F6C702;
      }
    }
  }
 
  .section-one {
-  margin-top:100px;
-  margin-top: 100px;
+  padding-top:130px;
+  padding-bottom: 210px;
   .container {
    .row {
     div {
      .header {
       h1 {
+       margin-left: 2%;
+       margin-right: 2%;
+       margin-top:10px;
+       line-height: 75px;
        color:#fff !important;
        font-weight: bold;
-       font-size: 64px;
+       font-size: 60px;
       }
-      p {
-       color : #fff;
-       line-height: 40px;
-       margin-left: 10%;
-       margin-right: 10%;
-      }
+     }
+     p {
+      color : #fff;
+      line-height: 40px;
+      margin-left: 12%;
+      margin-right: 12%;
      }
     }
    }
   }
+ }
+
+ .section-two {
+  background : #fff;
+  padding-top: 120px;
+  padding-bottom: 120px;
+   .container {
+    .row {
+     div{
+      .header{
+       h1 {
+        text-align: left;
+        font-weight : bold;
+        font-size : 32px;
+        line-height: 45px;
+       }
+      }
+      p {
+       text-align: left;
+       line-height: 35px;
+       margin-top: 10px;
+      }
+     }
+    }
+   }
+ }
+
+ .section-three {
+  background : #242291;
+  padding-top : 100px;
+  padding-bottom: 100px;
+  .container {
+   .row{
+    text-align : center;
+     div {
+      .card {
+       border : 1px solid #ddd;
+       margin-top : 20px;
+       margin-bottom: 10px;
+       min-height: 200px;
+       padding : 20px;
+       .card-body {
+        .card-title {
+         font-weight : bold;
+        }
+       }
+      }
+     }
+   }
+  }
+ }
+
+ .section-four{
+  background : #fff;
+  padding-top : 50px;
+  padding-bottom: 50px;
+  .container {
+   .row {
+    .colone {
+      text-align: left;
+      h1 {
+       font-weight: bold;
+      }
+    }
+    .coltwo {
+     align-content: left;
+    }
+   }
+  }
+ }
+
+ footer {
+  background  : #eee;
+  padding-top : 20px;
+  padding-bottom: 20px;
  }
 
 }

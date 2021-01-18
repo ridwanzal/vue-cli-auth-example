@@ -1,4 +1,6 @@
-## Project setup
+## HRIS management system
+
+### Project setup
 ```
 npm install
 ```

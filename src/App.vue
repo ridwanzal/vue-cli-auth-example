@@ -1,6 +1,7 @@
 
 <template>
   <div id="app">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <router-view @authenticated="setAuthenticated" />
   </div>
 </template>
@@ -40,10 +41,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700&display=swap');
 
 #app {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -51,4 +52,9 @@ export default {
   font-weight: 400;
   min-height : 1200px;
 }
+
+.bold{
+ font-weight: bold;
+}
+
 </style>
