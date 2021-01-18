@@ -1,29 +1,6 @@
+
 <template>
   <div id="app">
-    <div id="nav">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                 <router-link class="nav-link" to="/">Home</router-link>
-              </li>
-              <li class="nav-item">
-                <router-link class="nav-link" to="/about">About</router-link>
-              </li>
-              <li class="nav-item">
-                <router-link class="nav-link" to="/product">Product</router-link>
-              </li>
-            </ul>
-            <span class="navbar-text">
-              <router-link class="nav-link" to="/login">Login</router-link>
-            </span>
-          </div>
-      </nav>
-    </div>
     <router-view @authenticated="setAuthenticated" />
   </div>
 </template>
@@ -35,6 +12,9 @@ export default {
   data () {
     return {
       authenticated: false,
+      authlink: '/auth/masuk',
+      loginLabel: 'Login',
+      logoutLabel: 'Logout',
       mock_account: {
         username: 'ridwan',
         password: '123'
@@ -42,8 +22,9 @@ export default {
     }
   },
   mounted () {
+    console.log(this.loginLabel)
     if (!this.authenticated) {
-      this.$router.replace({ name: 'login' })
+      // this.$router.replace({ name: 'login' })
     }
   },
   methods: {
@@ -52,31 +33,22 @@ export default {
     },
     logout () {
       this.authenticated = false
+      this.$router.replace({ name: 'masuk' })
     }
   }
 }
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  nav {
-    margin-bottom: 20px;
-  }
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  background : #242291;
+  font-weight: 400;
+  min-height : 1200px;
 }
 </style>
