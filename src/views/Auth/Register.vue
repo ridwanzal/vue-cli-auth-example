@@ -7,11 +7,12 @@
               <div class="card auth-container">
                 <div class="card-body">
                   <div class="login">
-                    <div class="login__message" v-if="show">{{ login_message }}</div>
+                    <div class="login__message" v-if="show_login_message">{{ login_message }}</div>
                     <div class="form-group">
                       <div class="login__username">
                         <label class="labels-generic" for="emails">Email address</label>
                         <input v-bind:class="{empty:isEmpty}" class="auth-forms" type="email" placeholder="Username" v-model="input.username">
+                        <small id="emailHelp" class="form-text text-muted" v-if="show_message_email">We'll never share your email with anyone else.</small>
                       </div>
                     </div>
                     <div class="form-group">
@@ -21,10 +22,10 @@
                       </div>
                     </div>
                     <div class="login__submit">
-                      <input class="submit" type="submit" value="Masuk" v-on:click="login();">
+                      <input class="submit" type="submit" value="Daftar" v-on:click="login();">
                     </div>
                     <div class="form-group auth-container__register">
-                      <div>Belum punya akun ? <a class="" v-on:click="goDaftar();"><b>Daftar</b></a></div>
+                      Sudah punya akun ? <a class="link" v-on:click="goMasuk();"><b>Masuk</b></a>
                     </div>
                   </div>
                 </div>
@@ -41,7 +42,7 @@ export default {
   name: 'Login',
   data () {
     return {
-      show: false,
+      show_login_message: false,
       isEmpty: false,
       login_mesage: '',
       input: {
@@ -56,11 +57,14 @@ export default {
     }
   },
   methods: {
+    goMasuk () {
+      this.$router.replace({ name: 'masuk' })
+    },
     login () {
       const uname = this.input.username
       const pw = this.input.password
       if (uname === this.$parent.mock_account.username && pw === this.$parent.mock_account.password) {
-        this.show = false
+        this.show_login_message = false
         this.$emit('authenticated', true)
         this.$router.replace({ name: 'home' })
       } else {
@@ -73,7 +77,7 @@ export default {
         }
 
         if (uname !== '' && pw !== '') {
-          this.show = true
+          this.show_login_message = true
           this.isEmpty = false
           this.login_message = 'Login Failed, please input right data'
         }

@@ -163,6 +163,12 @@ export default {
 <style lang="scss">
 
 .landing-wrapper{
+ .container {
+  @media only screen and (max-width: 600px) {
+   padding-right : 6%;
+   padding-left: 6%;
+  }
+ }
  #nav {
    nav {
     padding-top: 20px;
@@ -191,20 +197,34 @@ export default {
  }
 
  .section-one {
+  @media only screen and (max-width: 600px) {
+   padding-top : 60px;
+   padding-bottom: 60px;
+  }
   padding-top:130px;
   padding-bottom: 210px;
   .container {
    .row {
     div {
      .header {
+      img {
+       @media only screen and (max-width: 600px) {
+        width : 60%;
+       }
+      }
       h1 {
-       margin-left: 2%;
-       margin-right: 2%;
+       margin-left: 10%;
+       margin-right: 10%;
        margin-top:10px;
        line-height: 75px;
        color:#fff !important;
        font-weight: bold;
        font-size: 60px;
+        @media only screen and (max-width: 600px) {
+         font-size : 40px;
+         margin-left: 0;
+         margin-right: 0;
+        }
       }
      }
      p {
@@ -212,6 +232,10 @@ export default {
       line-height: 40px;
       margin-left: 12%;
       margin-right: 12%;
+        @media only screen and (max-width: 600px) {
+         margin-left: 10px;
+         margin-right: 10px;
+        }
      }
     }
    }
@@ -222,6 +246,10 @@ export default {
   background : #fff;
   padding-top: 120px;
   padding-bottom: 120px;
+  @media only screen and (max-width: 600px) {
+   padding-top : 40px;
+   padding-bottom: 40px;
+  }
    .container {
     .row {
      div{
@@ -247,6 +275,10 @@ export default {
   background : #242291;
   padding-top : 100px;
   padding-bottom: 100px;
+   @media only screen and (max-width: 600px) {
+    padding-top : 20px;
+    padding-bottom: 20px;
+   }
   .container {
    .row{
     text-align : center;

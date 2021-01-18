@@ -58,4 +58,8 @@ export default {
  font-weight: bold;
 }
 
+.link{
+  cursor: pointer;
+}
+
 </style>

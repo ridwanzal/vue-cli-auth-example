@@ -7,24 +7,26 @@
               <div class="card auth-container">
                 <div class="card-body">
                   <div class="login">
-                    <div class="login__message" v-if="show">{{ login_message }}</div>
+                    <div class="login__message" v-if="show_login_message">{{ login_message }}</div>
                     <div class="form-group">
                       <div class="login__username">
                         <label class="labels-generic" for="emails">Email address</label>
-                        <input v-bind:class="{empty:isEmpty}" class="auth-forms" type="email" placeholder="Username" v-model="input.username">
+                        <input v-bind:class="{empty:is_email_empty}" class="auth-forms" type="email" placeholder="Username" v-model="input.username">
+                        <small id="emailHelp" class="form-text text-muted message__error" v-if="show_email_message">Please provide valid email address</small>
                       </div>
                     </div>
                     <div class="form-group">
                       <div class="login__password">
                         <label class="labels-generic" for="password">Password</label>
-                        <input v-bind:class="{empty:isEmpty}" class="auth-forms" type="password" placeholder="Password" v-model="input.password">
+                        <input v-bind:class="{empty:is_pass_empty }" class="auth-forms" type="password" placeholder="Password" v-model="input.password">
+                        <small id="emailHelp" class="form-text text-muted message__error" v-if="show_pass_message">Please provide password</small>
                       </div>
                     </div>
                     <div class="login__submit">
                       <input class="submit" type="submit" value="Masuk" v-on:click="login();">
                     </div>
                     <div class="form-group auth-container__register">
-                      <div>Belum punya akun ? <a class="" v-on:click="goDaftar();"><b>Daftar</b></a></div>
+                      Belum punya akun ? <a class="link" v-on:click="goDaftar();"><b>Daftar</b></a>
                     </div>
                   </div>
                 </div>
@@ -41,14 +43,20 @@ export default {
   name: 'Login',
   data () {
     return {
-      show: false,
-      isEmpty: false,
+      show_login_message: false,
+      show_email_message: false,
+      show_pass_message: false,
+      is_email_empty: false,
+      is_pass_empty: false,
       login_mesage: '',
       input: {
         username: '',
         password: ''
       }
     }
+  },
+  watch: {
+
   },
   mounted () {
     if (this.$parent.authenticated) {
@@ -63,21 +71,27 @@ export default {
       const uname = this.input.username
       const pw = this.input.password
       if (uname === this.$parent.mock_account.username && pw === this.$parent.mock_account.password) {
-        this.show = false
+        this.show_login_message = false
         this.$emit('authenticated', true)
         this.$router.replace({ name: 'home' })
       } else {
         if (uname === '') {
-          this.isEmpty = true
+          this.is_email_empty = true
+          this.show_email_message = true
+          this.show_login_message = false
         }
 
         if (pw === '') {
-          this.isEmpty = true
+          this.is_pass_empty = true
+          this.show_pass_message = true
+          this.show_login_message = false
         }
 
         if (uname !== '' && pw !== '') {
-          this.show = true
-          this.isEmpty = false
+          this.show_login_message = true
+          this.is_pass_empty = false
+          this.is_email_empty = false
+          this.show_email_message = false
           this.login_message = 'Login Failed, please input right data'
         }
       }
@@ -90,6 +104,17 @@ export default {
 .labels-generic{
   color : #525252;
   font-weight: bold;
+}
+
+.message {
+  &__error {
+    color : #E84343 !important;
+  }
+
+  &__default {
+    color : #6c757d !important
+  }
+
 }
 
 .auth {
@@ -124,7 +149,7 @@ export default {
   &__message {
    background : #f78585;
    padding : 10px;
-   width : 325px;
+   width : 100%;
    color : #fff;
    border-radius : 6px;
    margin : 0 auto;
