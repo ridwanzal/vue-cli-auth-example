@@ -12,14 +12,14 @@
                       <div class="login__username">
                         <label class="labels-generic" for="emails">Email address</label>
                         <input v-bind:class="{empty:is_email_empty}" class="auth-forms" type="email" placeholder="Username" v-model="input.username">
-                        <small id="emailHelp" class="form-text text-muted message__error" v-if="show_email_message">Please provide valid email address</small>
+                        <small id="emailHelp" class="form-text text-muted message__error" v-if="show_email_message">Email tidak boleh kosong</small>
                       </div>
                     </div>
                     <div class="form-group">
                       <div class="login__password">
                         <label class="labels-generic" for="password">Password</label>
                         <input v-bind:class="{empty:is_pass_empty }" class="auth-forms" type="password" placeholder="Password" v-model="input.password">
-                        <small id="emailHelp" class="form-text text-muted message__error" v-if="show_pass_message">Please provide password</small>
+                        <small id="emailHelp" class="form-text text-muted message__error" v-if="show_pass_message">Kata Sandi tidak boleh kosong</small>
                       </div>
                     </div>
                     <div class="login__submit">

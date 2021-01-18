@@ -230,8 +230,8 @@ export default {
      p {
       color : #fff;
       line-height: 40px;
-      margin-left: 12%;
-      margin-right: 12%;
+      margin-left: 16%;
+      margin-right: 16%;
         @media only screen and (max-width: 600px) {
          margin-left: 10px;
          margin-right: 10px;
