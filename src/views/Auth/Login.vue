@@ -2,8 +2,8 @@
 <div class="auth">
   <center><img :src="`/img/logo-people.svg`"></center>
   <div class="container">
-      <div class="row">
-          <div class="col-lg-12 col-md-12 col-xs-12">
+      <div class="row justify-content-md-center">
+          <div class="col-lg-4 col-md-4 col-xs-12">
               <div class="card auth-container">
                 <div class="card-body">
                   <div class="login">
@@ -93,7 +93,7 @@ export default {
 }
 
 .auth {
-  padding : 120px;
+  padding-top : 120px;
   .auth-container{
     &__register {
       margin-top: 30px;

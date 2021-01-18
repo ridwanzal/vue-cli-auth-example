@@ -2,6 +2,7 @@
 <template>
   <div id="app">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>HRIS-People</title>
     <router-view @authenticated="setAuthenticated" />
   </div>
 </template>
